@@ -1,0 +1,12 @@
+
+.body {
+ margin-top:0;
+}
+
+.frame {
+    width: 335px;
+    height: 555px;
+    border: 0;
+    transform: scale(1.0);
+    transform-origin: top left;
+}
