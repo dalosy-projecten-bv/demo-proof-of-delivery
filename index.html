@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
-    <title>Proof of delivery demo</title>
+    <title>Demo proof of delivery</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,28 +24,18 @@
                   <iframe id="app" class="frame" src="app/index.html"></iframe>
                 </div>
             </div>
-            <div class="col-md">
-              <div id="app_description"></div>
-              <div id="app_barcodes"></div>
+            <div class="col-md my-auto">
+              <div id="barcodes"></div>
             </div>
         </div>
     </div>
     <!-- Optional JavaScript -->
     <script>
-      current_page = '';
-      function currentPage(page)
-      {
-        current_page = page;
-        $("#app_description").load(`app_companion/pages/${current_page}.html`)
-        $("#app_barcodes").load(`app_companion/pages/${current_page}_barcodes.html`)
-      }
-      function scannerEnabled(enabled)
-      {
-         if (enabled) {
-           $("#app_barcodes").show()
-         } else {
-          $("#app_barcodes").hide()
-         }
+      function barcodes(barcodes) {
+        $("#barcodes").empty();
+        $.each(barcodes,function( index, value ) {
+          $("#barcodes").append($(`<button style="margin: 8px"onclick="barcodeScanned(\'${value}\')"><img src="app_companion/assets/barcode_large.png" /><br/>${value}</button>`));
+        });
       }
       function barcodeScanned(barcode)
       {
